@@ -2,6 +2,9 @@ import * as types from "../Action/actionType";
 
 let initialState = {
   basket: [],
+  loading: false,
+  user: [],
+  error: [],
 };
 
 const basketReducer = (state = initialState, action) => {
@@ -21,6 +24,23 @@ const basketReducer = (state = initialState, action) => {
       return {
         ...state,
         basket: updateCart,
+      };
+    case types.REGISTER_START:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.REGISTER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        user: action.payload,
+      };
+    case types.REGISTER_FAIL:
+      return {
+        ...state,
+        loading: false,
+        user: action.payload,
       };
 
     default:

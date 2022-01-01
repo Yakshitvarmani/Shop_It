@@ -6,6 +6,8 @@ import SingleProduct from "./Components/Pages/SingleProduct";
 import Login from "./Components/Pages/Login";
 import SignUp from "./Components/Pages/SignUp";
 import Check from "./CheckOut/Check";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
@@ -14,6 +16,7 @@ const App = () => {
         <Router>
           <header>
             <HeaderComponent />
+            <ToastContainer />
           </header>
           <main>
             <Routes>
