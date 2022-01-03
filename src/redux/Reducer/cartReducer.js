@@ -26,21 +26,29 @@ const basketReducer = (state = initialState, action) => {
         basket: updateCart,
       };
     case types.REGISTER_START:
+    case types.LOGIN_START:
       return {
         ...state,
         loading: true,
       };
     case types.REGISTER_SUCCESS:
+    case types.LOGIN_SUCCESS:
       return {
         ...state,
         loading: false,
         user: action.payload,
       };
     case types.REGISTER_FAIL:
+    case types.LOGIN_FAIL:
       return {
         ...state,
         loading: false,
         user: action.payload,
+      };
+    case types.SET_BASKET_EMPTY:
+      return {
+        ...state,
+        basket: [],
       };
 
     default:

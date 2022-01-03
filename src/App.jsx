@@ -8,6 +8,14 @@ import SignUp from "./Components/Pages/SignUp";
 import Check from "./CheckOut/Check";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Payment from "./Payment/Payment";
+import { auth } from "./firebase";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const promise = loadStripe(
+  "pk_test_51KDk7ZSBxqm3DVXjsqWq0mCfCFZdlJU7Yv28YCPHbWB2QRaewEj7CGvhfSUDnEmPoAqJBaaoSpRktwroNWEAtTjJ00Y2S8oDW3"
+);
 
 const App = () => {
   return (
@@ -25,6 +33,14 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/checkout" element={<Check />} />
+              <Route
+                path="/payment"
+                element={
+                  <Elements stripe={promise}>
+                    <Payment />
+                  </Elements>
+                }
+              />
             </Routes>
           </main>
           <footer></footer>
